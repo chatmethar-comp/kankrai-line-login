@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <h1 class="text-4xl font-semibold text-blue-900 font-Kanit">Kankrai Line Login</h1>
       <button v-show="displayName===''" @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
-      <img class=" w-full max-w-lg mx-10 p-10 rounded-lg" :src="pictureUrl" alt="">
+      <img class=" w-full max-w-lg mx-10 p-10 overflow-hidden rounded-lg" :src="pictureUrl" alt="">
       <h2 class="text-2xl font-medium">{{ displayName }}</h2>
       <p>{{ statusMessage }}</p>
       <button v-show="displayName" @click="lineLogout" class="absolute bottom-3 font-bold text-white bg-red-500 text-2xl px-4 py-2">Logout</button>
