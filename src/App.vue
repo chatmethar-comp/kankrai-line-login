@@ -30,6 +30,12 @@ const lineLogin = () => {
           const accessToken = liff.getAccessToken();
           console.log(accessToken);
       }
+      
+  }).then(()=>{
+    liff.init(() => {
+          const idToken = liff.getDecodedIDToken();
+          console.log('idToken: ', idToken); // print decoded idToken object
+      });
   });
 
   
