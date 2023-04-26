@@ -1,10 +1,13 @@
 <template>
   <div class="container mx-auto my-12">
     <div class="flex flex-col items-center">
-      <h2 class="text-4xl font-semibold text-blue-900 uppercase font-Kanit">Kankrai Line Login</h2>
+      <h1 class="text-4xl font-semibold text-blue-900 font-Kanit">Kankrai Line Login</h1>
       <button v-show="displayName===''" @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
-      <p>{{ displayName }}</p>
       <img :src="pictureUrl" alt="">
+      <h2 class="text-2xl">{{ displayName }}</h2>
+      <p>{{ statusMessage }}</p>
+      <button v-show="displayName" @click="lineLogin" class="font-bold text-white bg-red-500 text-2xl px-4 py-2">Logout</button>
+
     </div>
   </div>
 </template>
@@ -57,6 +60,15 @@ const lineLogin = () => {
       }
   })
 }
+
+  const lineLogout = () => {
+    liff.logout();
+    window.location.reload();
+    displayName.value = '';
+    pictureUrl.value = '';
+    statusMessage.value = '';
+    userId.value = '';
+  }
 
 </script>
 
