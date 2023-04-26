@@ -32,7 +32,7 @@ const lineLogin = () => {
       }
       
   }).then(()=>{
-    liff.init(() => {
+    liff.init({liffId: '1660982627-GnrB0Nkj'}, () => {
           const idToken = liff.getDecodedIDToken();
           console.log('idToken: ', idToken); // print decoded idToken object
       });
