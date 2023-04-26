@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@line/liff": "^2.22.0",
     "@team-decorate/vue-line-login": "^1.3.0",
     "vue": "^3.2.47"
   },
