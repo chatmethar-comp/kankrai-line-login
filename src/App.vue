@@ -6,7 +6,7 @@
       <img :src="pictureUrl" alt="">
       <h2 class="text-2xl">{{ displayName }}</h2>
       <p>{{ statusMessage }}</p>
-      <button v-show="displayName" @click="lineLogin" class="font-bold text-white bg-red-500 text-2xl px-4 py-2">Logout</button>
+      <button v-show="displayName" @click="lineLogout" class="font-bold text-white bg-red-500 text-2xl px-4 py-2">Logout</button>
 
     </div>
   </div>
