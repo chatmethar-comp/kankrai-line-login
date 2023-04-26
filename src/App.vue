@@ -2,9 +2,10 @@
   <div class="container mx-auto my-12">
     <div class="flex flex-col items-center">
       <h2 class="text-4xl font-semibold text-blue-900 uppercase font-Kanit">Kankrai Line Login</h2>
-      <button v-if="!liff.isLoggedIn" @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
+      <button @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
       {{ displayName }}
       <p>{{ displayName }}</p>
+      <p>{{ pictureUrl }} df</p>
     </div>
   </div>
 </template>
@@ -17,6 +18,7 @@ const displayName = ref('');
 const pictureUrl = ref('');
 const statusMessage = ref('');
 const userId = ref('');
+
 const lineLogin = () => {
   liff.init({
     liffId: '1660982627-GnrB0Nkj', // Use own liffId
@@ -31,21 +33,16 @@ const lineLogin = () => {
       console.log(liff.getLineVersion());
       if (!liff.isLoggedIn()) {
           liff.login();
+      } else {
+          liff.getProfile().then((profile)=>{
+            console.log(profile);
+            displayName.value = profile.displayName;
+            pictureUrl.value = profile.pictureUrl;
+            statusMessage.value = profile.statusMessage;
+            userId.value = profile.userId;
+          })
       }
   })
-
-  liff
-  .getProfile()
-  .then((profile)=>{
-      console.log(profile);
-      displayName.value = profile.displayName;
-      pictureUrl.value = profile.pictureUrl;
-      statusMessage.value = profile.statusMessage;
-      userId.value = profile.userId;
-  })
-
-
-  
 }
 
 </script>
