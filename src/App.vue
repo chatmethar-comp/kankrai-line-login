@@ -2,10 +2,9 @@
   <div class="container mx-auto my-12">
     <div class="flex flex-col items-center">
       <h2 class="text-4xl font-semibold text-blue-900 uppercase font-Kanit">Kankrai Line Login</h2>
-      <button @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
-      {{ displayName }}
+      <button v-show="displayName===''" @click="lineLogin" class="font-bold text-white bg-green-500 text-2xl px-4 py-2">Login with Line</button>
       <p>{{ displayName }}</p>
-      <p>{{ pictureUrl }} df</p>
+      <img :src="pictureUrl" alt="">
     </div>
   </div>
 </template>
@@ -18,6 +17,20 @@ const displayName = ref('');
 const pictureUrl = ref('');
 const statusMessage = ref('');
 const userId = ref('');
+
+liff.init({
+    liffId: '1660982627-GnrB0Nkj', // Use own liffId
+}).then(()=>{
+  if(liff.isLoggedIn()){
+    liff.getProfile().then((profile)=>{
+      console.log(profile);
+      displayName.value = profile.displayName;
+      pictureUrl.value = profile.pictureUrl;
+      statusMessage.value = profile.statusMessage;
+      userId.value = profile.userId;
+    })
+  }
+})
 
 const lineLogin = () => {
   liff.init({
